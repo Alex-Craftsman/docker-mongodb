@@ -1,7 +1,15 @@
-MongoDB:
-  image: sameersbn/mongodb:latest
-  ports:
-    - "27017:27017"
-  volumes:
-    - /srv/docker/mongodb:/var/lib/mongodb
-  restart: always
+version: '3.7'
+
+services:
+
+  mongodb:
+    build: .
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb:/var/lib/mongodb
+    environment: 
+      - USERMAP_UID=1000
+      - USERMAP_GID=1000
+    restart: always
+
